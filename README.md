@@ -5,7 +5,8 @@ usage: pgdb_retriever.py [-h] LOCUS_TAG
  and it returns some of the information related to that locus tag.   
  The info will be printed to screen in the json format.              
                                                                      
- Example:                                                            
+ Example:
+ ```bash
  $ python pgdb_retriever.py PA14_73070                               
  {                                                                   
      "locus_tag": "PA14_73070",                                      
@@ -33,7 +34,7 @@ usage: pgdb_retriever.py [-h] LOCUS_TAG
          }                                                           
      ]                                                               
  }                                                                   
-
+```
 
 @author: juliofdiaz.github.io
 
