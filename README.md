@@ -18,7 +18,9 @@ Ypu can simple download the [pgdb_retriever.py](https://raw.githubusercontent.co
 git clone https://github.com/juliofdiaz/pgdb_retriever.git
 ```
 
-
+You will need:
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup): `pip install beautifulsoup4`
+* [Requests]https://requests.readthedocs.io/en/master/user/install/): 
 
 ## Usage: 
 ```
