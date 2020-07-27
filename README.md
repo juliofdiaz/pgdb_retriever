@@ -59,7 +59,7 @@ optional arguments:
 Ackonowledge The Pseudomnas Genome Database (PGDB) in any of your publications. 
 >Nucleic Acids Res. (2016) doi: 10.1093/nar/gkv1227 (Database issue). Pubmed: [26578582](https://pubmed.ncbi.nlm.nih.gov/26578582/)
 
-I wrote this tool to retrieve data for my own projects and am not affiliated to the PGDB.
+*I wrote this tool to retrieve data for my own projects and am not affiliated with The PGDB. To know more about my projects visit [my page](juliofdiaz.github.io)*
 
 ## Contact:
 julio.diaz@zoo.ox.ac.uk
