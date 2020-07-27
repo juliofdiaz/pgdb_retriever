@@ -12,11 +12,13 @@ pgdb-retriever searches the  [The Pseudomonas Genome Database](https://www.pseud
   
 ## Install:
 
-Ypu can simple download the pgdb_retriever.py or clone this repository:
+Ypu can simple download the [pgdb_retriever.py](https://raw.githubusercontent.com/juliofdiaz/pgdb_retriever/master/pgdb_retriever.py) or clone this repository:
 
 ```bash
-git clone
+git clone https://github.com/juliofdiaz/pgdb_retriever.git
 ```
+
+
 
 ## Usage: 
 ```
