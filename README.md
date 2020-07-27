@@ -1,5 +1,4 @@
-
-
+# pgdb-retriever
 
  pgdb-retriever program takes a *Pseudomonas aeruginosa* locus tag (e.g PA14_73070) from [The Pseudomonas Genome Database](https://www.pseudomonas.com) 
  and it returns some of the information related to that locus tag. The retrieved information will be printed on screen in the json format.
@@ -56,3 +55,11 @@ optional arguments:
  }                                                                   
 ```
 
+## If you use this tool
+Ackonowledge The Pseudomnas Genome Database (PGDB) in any of your publications. 
+>Nucleic Acids Res. (2016) doi: 10.1093/nar/gkv1227 (Database issue). Pubmed: [26578582](https://pubmed.ncbi.nlm.nih.gov/26578582/)
+
+I wrote this tool to retrieve data for my own projects and am not affiliated to the PGDB.
+
+## Contact:
+julio.diaz@zoo.ox.ac.uk
