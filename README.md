@@ -1,9 +1,8 @@
 usage: pgdb_retriever.py [-h] LOCUS_TAG
 
 
- This program takes a locus tag from The Pseudomonas Genome Database 
- and it returns some of the information related to that locus tag.   
- The info will be printed to screen in the json format.              
+ This program takes a *Pseudomonas aeruginosa* locus tag (e.g PA14_73070) from [The Pseudomonas Genome Database](https://www.pseudomonas.com) 
+ and it returns some of the information related to that locus tag. The retrieved information will be printed on screen in the json format.              
                                                                      
  Example:
  ```bash
