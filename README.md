@@ -1,8 +1,6 @@
 # pgdb-retriever
 
- pgdb-retriever program takes a *Pseudomonas aeruginosa* locus tag (e.g PA14_73070) from [The Pseudomonas Genome Database](https://www.pseudomonas.com) 
- and it returns some of the information related to that locus tag. The retrieved information will be printed on screen in the json format.
-
+pgdb-retriever searches the  [The Pseudomonas Genome Database](https://www.pseudomonas.com) for information related to a user-input locus tag (e.g PA14_73070). I wrote this code because I wanted to obtain the PseudoCAP functional annotation for more than a few loci. The retrieved information will be printed on screen in the json format.
 
 ## What you can retrieve:
 * **locus tag**: The locus tag input by the user (`the gene` we are investigating)
@@ -12,7 +10,13 @@
 * **pseudocap**: List of PseudoCAP functions annotated to `the gene`
 * **operon**: List of genes in the same operon as `the gene`
   
+## Install:
 
+Ypu can simple download the pgdb_retriever.py or clone this repository:
+
+```bash
+git clone
+```
 
 ## Usage: 
 ```
@@ -56,10 +60,10 @@ optional arguments:
 ```
 
 ## If you use this tool
-Ackonowledge The Pseudomnas Genome Database (PGDB) in any of your publications. 
+If you use the data you retrieved with this tool in any of your publications, please ackonowledge The Pseudomnas Genome Database (PGDB).
 >Nucleic Acids Res. (2016) doi: 10.1093/nar/gkv1227 (Database issue). Pubmed: [26578582](https://pubmed.ncbi.nlm.nih.gov/26578582/)
 
-*I wrote this tool to retrieve data for my own projects and am not affiliated with The PGDB. To know more about my projects visit [my page](juliofdiaz.github.io)*
+*I wrote this tool to get data for my own projects and am not affiliated with The PGDB. If you use this little tool, please take a moment to acknowledge you are a rockstar :star2:. To know more about my projects visit [my page](juliofdiaz.github.io)*
 
 ## Contact:
 julio.diaz@zoo.ox.ac.uk
