@@ -1,0 +1,150 @@
+#!/usr/bin/env python
+
+import argparse
+import requests
+import json
+from bs4 import BeautifulSoup
+import sys
+import re
+
+desc = """
+#######################################################################
+#                                                                     #
+# This program takes a locus tag from The Pseudomonas Genome Database #
+# and it returns some of the information related to that locus tag.   #
+# The info will be printed to screen in the json format.              #
+#                                                                     #
+# Example:                                                            #
+# $ python """+sys.argv[0]+""" PA14_73070                               #
+# {                                                                   #
+#     "locus_tag": "PA14_73070",                                      #
+#     "gene": "pyrQ",                                                 #
+#     "product_name": "dihydroorotase",                               #
+#     "strain": "Pseudomonas aeruginosa UCBPP-PA14",                  #
+#     "pseudocap": [                                                  #
+#         "Nucleotide biosynthesis and metabolism"                    #
+#     ],                                                              #
+#     "operon": [                                                     #
+#         {                                                           #
+#             "locus_tag": "PA14_73050",                              #
+#             "gene_name": null,                                      #
+#             "description": "GTP cyclohydrolase"                     #
+#         },                                                          #
+#         {                                                           #
+#             "locus_tag": "PA14_73060",                              #
+#             "gene_name": null,                                      #
+#             "description": "hypothetical protein"                   #
+#         },                                                          #
+#         {                                                           #
+#             "locus_tag": "PA14_73070",                              #
+#             "gene_name": "pyrQ",                                    #
+#             "description": "dihydroorotase"                         #
+#         }                                                           #
+#     ]                                                               #
+# }                                                                   #
+#                                                                     #
+#                                                                     #
+#######################################################################
+
+@author: juliofdiaz.github.io
+"""
+
+
+parser = argparse.ArgumentParser(description=desc, formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument('locus_tag', metavar='LOCUS_TAG',
+                    help='the locus of interest')
+
+args = parser.parse_args()
+
+gene_locus = args.locus_tag
+base_url = "http://www.pseudomonas.com/feature/show?locus_tag="
+
+json_item = {}
+
+url = base_url+gene_locus
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+
+# Get main information
+strain = soup.find("td",text="Strain").findNext("td").text.strip()
+gene = soup.find("td",text="Name").findNext("td").text.strip()
+locus_tag = soup.find("td",text="Locus Tag").findNext("td").text.strip()
+product_name = soup.find("td",text="Product	Name").findNext("td").text.strip()
+
+json_item["locus_tag"] = locus_tag
+json_item["gene"] = gene if gene != "" else None
+json_item["product_name"] = product_name if product_name != "" else None
+json_item["strain"] = strain.split("\n")[0] if strain.split("\n")[0] != "" else None
+
+# Get link to sequence information
+sequences = soup.find("a",text="Sequences")['href']
+# Get link to pseudocap data
+pseudocap = soup.find("a",text="Function/Pathways/GO")['href']
+# Get link to operon data. First make sure operon link can be found
+operon_item = soup.find("a",text=re.compile(' Operon*'))
+if operon_item  is not None:
+    operon = operon_item['href']
+
+
+# Get sequences raw HTML
+sequences_url = "http://www.pseudomonas.com"+sequences
+page_1 = requests.get(sequences_url)
+
+# Get sequences information
+soup_1 = BeautifulSoup(page_1.content, 'html.parser')
+#print(soup_1)
+aa_seq = soup_1.find("td",text="Amino Acid Sequence").findNext("div").text.strip().split("\t")[-1].replace(" ","")
+dna_seq = soup_1.find("td",text=re.compile('DNA Sequence for*')).findNext("div").text.strip().split("\t")[-1].replace(" ","")
+json_item["aa_sequence"] = aa_seq if aa_seq != "" else None
+json_item["dna_sequence"] = dna_seq if dna_seq != "" else None
+
+
+
+# Get pseudocap raw HTML
+pseudocap_url = "http://www.pseudomonas.com"+pseudocap
+page_2 = requests.get(pseudocap_url)
+
+# Get pseudocap functional annotation
+soup_2 = BeautifulSoup(page_2.content, 'html.parser')
+rows = soup_2.find("h3",
+    text="Functional Classifications Manually Assigned by PseudoCAP ").findNext("table").findNext("table").find_all("tr")
+
+pseudocap_list = []
+for row in rows:
+    cur_pseudocap = row.findNext("td").text.strip()
+    pseudocap_list.append(cur_pseudocap)
+
+json_item["pseudocap"] = pseudocap_list
+
+
+# Get operon information
+operon_list = []
+if operon_item is not None:
+    # Get operon raw HTML
+    operon_url = "http://www.pseudomonas.com"+operon
+    page_3 = requests.get(operon_url)
+    soup_3 = BeautifulSoup(page_3.content, 'html.parser')
+
+    # Find operon table
+    rows_2 = soup_3.find("h3",
+        text="Operons").findNext("table").findNext("table").find_all("tr")
+    rows_2.pop(0) # Get rid of header row
+
+    # Empty list of operon members
+    for row_2 in rows_2:
+        # Characterize current member of the operon
+        cur_gene = {}
+        cur_locus_tag = row_2.findNext("td").text.strip()
+        cur_gene_name = row_2.findNext("td").findNext("td").text.strip()
+        cur_description = row_2.findNext("td").findNext("td").findNext("td").text.strip()
+        cur_gene["locus_tag"] = cur_locus_tag
+        cur_gene["gene_name"] = cur_gene_name if cur_gene_name != "" else None
+        cur_gene["description"] = cur_description if cur_description != "" else None
+
+        operon_list.append(cur_gene)
+
+json_item["operon"] = operon_list
+
+
+
+print(json.dumps(json_item, indent=4) )
