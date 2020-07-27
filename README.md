@@ -6,16 +6,12 @@
 
 
 ## What you can retrieve:
-* **locus tag**: The locus tag input by the user
-* **gene**: The abreviated name of the gene
-* **product name**: A more descriptive name of the gene
-* **strain**: The 
-* **pseudocap**: relative paths to files. The only mandatory option.
-  It could be a path `"index.js"`, a [pattern] `"dist/app-*.js"`
-  or an array `["index.js", "dist/app-*.js", "!dist/app-exclude.js"]`.
-* **operon**: relative paths to files. The only mandatory option.
-  It could be a path `"index.js"`, a [pattern] `"dist/app-*.js"`
-  or an array `["index.js", "dist/app-*.js", "!dist/app-exclude.js"]`.
+* **locus tag**: The locus tag input by the user (`the gene` we are investigating)
+* **gene**: The abreviated name of `the gene`
+* **product name**: A more descriptive name of `the gene`
+* **strain**: The strain of *P. aeruginosa* in which `the gene` is found
+* **pseudocap**: List of PseudoCAP functions annotated to `the gene`
+* **operon**: List of genes in the same operon as `the gene`
   
 
 
