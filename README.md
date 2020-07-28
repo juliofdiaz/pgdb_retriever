@@ -18,9 +18,11 @@ Ypu can simple download the [pgdb_retriever.py](https://raw.githubusercontent.co
 git clone https://github.com/juliofdiaz/pgdb_retriever.git
 ```
 
-You will need:
-* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup): `pip install beautifulsoup4`
-* [Requests]https://requests.readthedocs.io/en/master/user/install/): 
+You will need these Python libraries:
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup): `pip install beautifulsoup4` OR `conda install -c anaconda beautifulsoup4`
+* [Requests](https://requests.readthedocs.io/en/master/user/install/): `pipenv install requests` OR `conda install -c anaconda requests`
+
+I have tried pgdb-retriever with Python 3.5+
 
 ## Usage: 
 ```
