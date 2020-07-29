@@ -7,6 +7,8 @@ pgdb-retriever searches the  [The Pseudomonas Genome Database](https://www.pseud
 * **gene**: The abreviated name of `the gene`
 * **product name**: A more descriptive name of `the gene`
 * **strain**: The strain of *P. aeruginosa* in which `the gene` is found
+* **aa_sequence** The amino acid sequence of `the gene`
+* **dna_sequence** The nucleotide sequence of `the gene`
 * **pseudocap**: List of PseudoCAP functions annotated to `the gene`
 * **operon**: List of genes in the same operon as `the gene`
   
