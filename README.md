@@ -11,10 +11,10 @@ pgdb-retriever searches the  [The Pseudomonas Genome Database](https://www.pseud
 * **dna_sequence** The nucleotide sequence of `the gene`
 * **pseudocap**: List of PseudoCAP functions annotated to `the gene`
 * **operon**: List of genes in the same operon as `the gene`
-  
+
 ## Install:
 
-You can download the [pgdb_retriever.py](https://raw.githubusercontent.com/juliofdiaz/pgdb_retriever/master/pgdb_retriever.py) or clone this repository:
+You can download [pgdb_retriever](https://raw.githubusercontent.com/juliofdiaz/pgdb_retriever/master/pgdb_retriever) or clone this repository:
 
 ```bash
 git clone https://github.com/juliofdiaz/pgdb_retriever.git
@@ -26,7 +26,7 @@ You will need these Python libraries:
 
 I have tried pgdb-retriever with Python 3.5+
 
-## Usage: 
+## Usage:
 ```
 python pgdb_retriever.py PA14_73070
 {
