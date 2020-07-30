@@ -15,7 +15,7 @@ desc = """
 # The info will be printed to screen in the json format.              #
 #                                                                     #
 # Example:                                                            #
-# $ python """+sys.argv[0]+""" PA14_73070                               #
+# $ """+sys.argv[0]+""" PA14_73070                               #
 # {                                                                   #
 #     "locus_tag": "PA14_73070",                                      #
 #     "gene": "pyrQ",                                                 #
