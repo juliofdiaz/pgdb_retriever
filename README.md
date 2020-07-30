@@ -28,7 +28,7 @@ I have tried pgdb-retriever with Python 3.5+
 
 ## Usage:
 ```
-python pgdb_retriever.py PA14_73070
+pgdb_retriever PA14_73070
 {
     "locus_tag": "PA14_73070",
     "gene": "pyrQ",
